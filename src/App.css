@@ -220,3 +220,29 @@ input {
 	padding: 1rem;
 	border: 0.1rem #c0c0c0 solid;
 }
+
+/* */
+.product-details {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	max-height: 90vh;
+}
+
+.product-details img {
+	max-height: 100vh;
+	max-width: 46rem;
+	margin: 0;
+}
+
+.product-details-description {
+	flex: 1 1;
+	margin: 1rem;
+}
+
+.close-modal {
+	position: relative;
+	right: 1rem;
+	top: 2.5rem;
+	z-index: 1000;
+}

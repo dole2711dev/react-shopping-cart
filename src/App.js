@@ -4,6 +4,7 @@ import data from "./data.json";
 import Products from "./components/Products";
 import Filter from "./components/Filter";
 import Cart from "./components/Cart";
+import Fade from "react-reveal/Fade";
 
 class App extends React.Component {
 	constructor() {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import formatCurrency from "./util";
+import Fade from "react-reveal/Fade";
 
 export default class Cart extends Component {
 	constructor(props) {
@@ -39,36 +40,38 @@ export default class Cart extends Component {
 				</div>
 				<div>
 					<div className="cart">
-						<ul className="cart-items">
-							{cartItems.map((item) => {
-								return (
-									<li key={item._id}>
-										<div>
-											<img
-												src={item.image}
-												alt={item.title}
-											/>
-										</div>
-										<div>
-											<div>{item.title}</div>
-											<div className="right">
-												{formatCurrency(item.price)} X{" "}
-												{item.count}{" "}
-												<button
-													className="button"
-													onClick={() =>
-														this.props.removeFromCart(
-															item._id
-														)
-													}>
-													Remove
-												</button>
+						<Fade left cascade>
+							<ul className="cart-items">
+								{cartItems.map((item) => {
+									return (
+										<li key={item._id}>
+											<div>
+												<img
+													src={item.image}
+													alt={item.title}
+												/>
 											</div>
-										</div>
-									</li>
-								);
-							})}
-						</ul>
+											<div>
+												<div>{item.title}</div>
+												<div className="right">
+													{formatCurrency(item.price)}{" "}
+													X {item.count}{" "}
+													<button
+														className="button"
+														onClick={() =>
+															this.props.removeFromCart(
+																item._id
+															)
+														}>
+														Remove
+													</button>
+												</div>
+											</div>
+										</li>
+									);
+								})}
+							</ul>
+						</Fade>
 					</div>
 					{cartItems.length !== 0 && (
 						<div>
@@ -94,57 +97,65 @@ export default class Cart extends Component {
 									</button>
 								</div>
 							</div>
-							{this.state.showCheckOut && (
-								<div className="cart">
-									<form onSubmit={this.createOrder}>
-										<ul className="form-container">
-											<li>
-												<label htmlFor="email">
-													Email
-												</label>
-												<input
-													id="email"
-													name="email"
-													type="email"
-													required
-													onChange={this.HandlerInput}
-												/>
-											</li>
-											<li>
-												<label htmlFor="name">
-													Name
-												</label>
-												<input
-													id="name"
-													name="name"
-													type="text"
-													required
-													onChange={this.HandlerInput}
-												/>
-											</li>
-											<li>
-												<label htmlFor="address">
-													Address
-												</label>
-												<input
-													id="address"
-													name="address"
-													type="text"
-													required
-													onChange={this.HandlerInput}
-												/>
-											</li>
-											<li>
-												<button
-													className="button primary"
-													type="submit">
-													Checkout
-												</button>
-											</li>
-										</ul>
-									</form>
-								</div>
-							)}
+							<Fade right cascade>
+								{this.state.showCheckOut && (
+									<div className="cart">
+										<form onSubmit={this.createOrder}>
+											<ul className="form-container">
+												<li>
+													<label htmlFor="email">
+														Email
+													</label>
+													<input
+														id="email"
+														name="email"
+														type="email"
+														required
+														onChange={
+															this.HandlerInput
+														}
+													/>
+												</li>
+												<li>
+													<label htmlFor="name">
+														Name
+													</label>
+													<input
+														id="name"
+														name="name"
+														type="text"
+														required
+														onChange={
+															this.HandlerInput
+														}
+													/>
+												</li>
+												<li>
+													<label htmlFor="address">
+														Address
+													</label>
+													<input
+														id="address"
+														name="address"
+														type="text"
+														required
+														onChange={
+															this.HandlerInput
+														}
+													/>
+												</li>
+												<li>
+													<button
+														className="button primary"
+														type="submit">
+														Checkout
+													</button>
+												</li>
+											</ul>
+										</form>
+									</div>
+								)}
+							</Fade>
 						</div>
 					)}
 				</div>
