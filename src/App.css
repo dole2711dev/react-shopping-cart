@@ -241,8 +241,8 @@ input {
 }
 
 .close-modal {
-	position: relative;
-	right: 1rem;
+	position: absolute;
+	right: 2.5rem;
 	top: 2.5rem;
 	z-index: 1000;
 }
